@@ -1,0 +1,46 @@
+<!--Added this code for custom Pipe -->
+<div *ngIf='categories && categories.length> 0'> 
+        Filter:<select (change)="selectedCategory.id=$event.target.value"
+        [(ngModel)]='selectedCategory.id'>
+            <option *ngFor="let category of categories" [value]='category.id'>
+                {{category.category}}
+            </option>
+        </select>
+        </div>
+        <!--Changes for custom Pipe ended -->
+        <div *ngIf='products && products.length>0'>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>MFG</th>
+                    <th>RATING</th>
+                    <th><button class="btn btn-success" (click)='toggleImage()'>
+                        {{showImage?'Hide':'Show'}} Images</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let product of products |productcategory:selectedCategory.id'> 
+                    <td>{{product.id}}</td>
+                    <!--advance router : Query Parameter-->
+                    <td><a [routerLink]="['/productdetail',product.id]"
+                        [queryParams]="{name:product.name,price:product.price,mfg:product.mfg.toString(),imageUrl:product.imageUrl}"
+                        >
+                        {{product.name |uppercase}}</a></td>    
+                    <td [style.padding.px]="50">{{product.price }}</td>
+                    <td [style.padding.px]="20">{{product.mfg | date:'short'| uppercase}}</td>
+                    <td [style.padding.px]="20">{{product.rating |number:'1.1-3'}}</td>
+                    <td> <img *ngIf='showImage' [src]='product.imageUrl'[style.padding.px]="5" [style.width.px]='product.imageWidth' 
+                        [style.height.px]='product.imageHeight' alt="Image Not Available" ></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Product in JSON</h2>
+        <ul>
+            <li *ngFor='let product of products'>
+                {{product | json}}
+            </li>
+        </ul>
+        </div>
