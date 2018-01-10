@@ -10,7 +10,8 @@ export class InMemoryDataService implements InMemoryDbService{
             "imageWidth":75,
             "mfg":"01-february-2017",
             "rating":3.5462,
-            "categoryId":1
+            "categoryId":1,
+            "country":1
         },
         {
             "id":2,
@@ -21,7 +22,8 @@ export class InMemoryDataService implements InMemoryDbService{
             "imageWidth":75,
             "mfg":"01-january-2017",
             "rating":4.5462,
-            "categoryId":1
+            "categoryId":1,
+            "country":1
         },
         {
             "id":3,
@@ -32,7 +34,8 @@ export class InMemoryDataService implements InMemoryDbService{
             "imageWidth":75,
             "mfg":"01-march-2017",
             "rating":5.5462,
-            "categoryId":1
+            "categoryId":1,
+            "country":1
         },
         {
             "id":4,
@@ -43,14 +46,20 @@ export class InMemoryDataService implements InMemoryDbService{
             "imageWidth":75,
             "mfg":"01-august-2017",
             "rating":8.5462,
-            "categoryId":2
+            "categoryId":2,
+            "country":2
         }
     ];
+    let countries=[
+        {id:1,name:"Ind"},
+        {id:2,name:"US"},
+        {id:3,name:"UK"}
+            ];
     let categories=[
         {"id":1,"category":"stationery"},
         {"id":2,"category":"electronics"},
         {"id":3,"category":"pharmacy"},
     ];
-    return {products,categories};
+    return {products,countries,categories};
     }
 }

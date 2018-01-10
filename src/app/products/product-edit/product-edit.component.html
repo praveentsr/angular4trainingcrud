@@ -1,0 +1,80 @@
+<div *ngIf='product'>
+  <form class="form-horizontal">
+  <div class="form-group">
+  <label class='control-label col-md-2'>Name</label>  
+  <div class='col-md-10'>
+  <input name='name'
+  [(ngModel)]='product.name' class="form-control" />
+  </div>  
+  </div>
+  <div class="form-group">
+  <label class='control-label col-md-2'>Price</label>  
+  <div class='col-md-10'>
+  <input name='price'
+  [(ngModel)]='product.price' type='number' class="form-control" />
+  </div>  
+  </div>
+  <div class="form-group">
+  <label class='control-label col-md-2'>Mfg</label>  
+  <div class='col-md-10'>
+  <input name='mfg' 
+  [(ngModel)]='product.mfg' type='text' class="form-control" />
+  </div>  
+  </div>
+  
+  <div class="form-group">
+  <label class='control-label col-md-2'>Rating</label>  
+  <div class='col-md-10'>
+  <input name='rating'
+  [(ngModel)]='product.rating' type='number' class="form-control" />
+  </div>  
+  </div>
+  
+  <div class="form-group">
+  <label class='control-label col-md-2'>Image</label>  
+  <div class='col-md-10'>
+  <input name='imageUrl'
+  [(ngModel)]='product.imageUrl'   class="form-control" />
+  </div>  
+  </div>
+  
+  <div class="form-group">
+  <label class='control-label col-md-2'>Image Height</label>  
+  <div class='col-md-10'>
+  <input name='imageHeight'
+  [(ngModel)]='product.imageHeight' type='number' class="form-control" />
+  </div>  
+  </div>
+  
+  <div class="form-group">
+  <label class='control-label col-md-2'>Image Width</label>  
+  <div class='col-md-10'>
+  <input name='imageWidth'
+  [(ngModel)]='product.imageWidth' type='number' class="form-control" />
+  </div>  
+  </div>   
+  <div class='form-group'>
+  <div class="col-md-offset-2 col-md-5">
+  <button
+  type='submit' 
+  class="btn btn-default"
+  (click)=
+  "saveProduct()">
+  Save</button>
+  <button
+  type='submit' 
+  class="btn btn-default"
+  (click)=
+  "deleteProduct()">
+  Delete</button>
+  <button
+  type='submit' 
+  class="btn btn-default"
+  (click)=
+  "cancel()">
+  Cancel</button>
+  </div>
+  </div>
+  </form>
+  <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+  </div>

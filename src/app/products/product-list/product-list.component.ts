@@ -3,6 +3,7 @@ import { Product } from './product';
 import { Category } from './category';
 import { ProductService } from './product.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'product-lit',
@@ -15,7 +16,7 @@ export class ProductListComponent{
     //constructor(_productService:ProductService){
       //  this.productService=_productService;
     //}
-    constructor(private productService:ProductService){
+    constructor(private productService:ProductService,private router:Router){
     }
     getProducts(){
         this.productService.getProducts()
@@ -35,6 +36,11 @@ export class ProductListComponent{
         this.getProducts();
         this.getCategories();
     }
+    createProduct():void{
+        this.
+        router.
+        navigate(['/newproduct']);
+        }
 products:Product[];
 categories:Category[];
 selectedCategory:Category=new Category(1,"stationary");

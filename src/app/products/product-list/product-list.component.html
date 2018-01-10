@@ -17,6 +17,7 @@
                     <th>PRICE</th>
                     <th>MFG</th>
                     <th>RATING</th>
+                    <th>Country</th>
                     <th><button class="btn btn-success" (click)='toggleImage()'>
                         {{showImage?'Hide':'Show'}} Images</button></th>
                 </tr>
@@ -32,11 +33,19 @@
                     <td [style.padding.px]="50">{{product.price }}</td>
                     <td [style.padding.px]="20">{{product.mfg | date:'short'| uppercase}}</td>
                     <td [style.padding.px]="20">{{product.rating |number:'1.1-3'}}</td>
+                    <td>{{product.country}}</td>
                     <td> <img *ngIf='showImage' [src]='product.imageUrl'[style.padding.px]="5" [style.width.px]='product.imageWidth' 
-                        [style.height.px]='product.imageHeight' alt="Image Not Available" ></td>
+                        [style.height.px]='product.imageHeight' alt="Image Not Available" >
+                    </td>
+                    <td><a [routerLink]="['/editproduct',product.id]">Edit</a></td>
                 </tr>
             </tbody>
         </table>
+        <button 
+        class='btn btn-primary' 
+        (click)='createProduct()'> 
+        Create New Product
+        </button>
         <h2>Product in JSON</h2>
         <ul>
             <li *ngFor='let product of products'>

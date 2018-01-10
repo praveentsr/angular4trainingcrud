@@ -5,16 +5,20 @@ import { ProductService } from './product-list/product.service';
 import { ProductdetailComponent } from './productdetail/productdetail.component'
 import { ProductdetailGuard } from './productdetail.guard';
 import { ProductRoutingModule } from './product-list/product-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 @NgModule({
     imports: [
-        ProductRoutingModule,FormsModule,CommonModule
+        ProductRoutingModule,FormsModule,CommonModule,ReactiveFormsModule 
     ],
   declarations: [
     ProductListComponent,
     ProductcategoryPipe,
-    ProductdetailComponent
+    ProductdetailComponent,
+    ProductCreateComponent,
+    ProductEditComponent
   ],
   providers: [ProductService,ProductdetailGuard]
 })

@@ -1,0 +1,106 @@
+<form class="form-horizontal" [formGroup]="productForm">
+  <div class="form-group">
+  <label class='control-label col-md-2'>Country</label>  
+  <div class='col-md-10'>
+  <select [(ngModel)]="selectedCountry.id" formControlName="country" #country>
+  <option *ngFor="let country of countries" value= {{country.id}}> {{country.name}}
+  </option>
+  </select>
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('productIdVar').touched || productForm.get('productIdVar').dirty) && !productForm.get('productIdVar').valid }">
+  <label class='control-label col-md-2' for="productId">Id</label>  
+  <div class='col-md-10'> 
+    <input #id class="form-control" id="productId" type="text" placeholder="Product Id (required)" required formControlName = "productIdVar"/>
+    <span class="help-block" *ngIf="(productForm.get('productIdVar').touched || productForm.get('productIdVar').dirty) && productForm.get('productIdVar').errors">
+      <span *ngIf="productForm.get('productIdVar').errors.required">
+          Please enter  product id.
+      </span>   
+  </span>
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('productNameVar').touched || productForm.get('productNameVar').dirty) && !productForm.get('productNameVar').valid }">
+  <label class='control-label col-md-2' for="productName">Name</label>  
+  <div class='col-md-10'>
+  <input #name class="form-control" id="productName" type="text" placeholder="Product Name (required)" 
+  required formControlName = "productNameVar"/>
+  <span class="help-block" *ngIf="(productForm.get('productNameVar').touched || productForm.get('productNameVar').dirty) && productForm.get('productNameVar').errors">
+    <span *ngIf="productForm.get('productNameVar').errors.required">
+        Please enter product name.
+    </span>
+  </span>
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('productPriceVar').touched || productForm.get('productPriceVar').dirty) && !productForm.get('productPriceVar').valid }">
+  <label class='control-label col-md-2' for="productPrice">Price</label>  
+  <div class='col-md-10'>
+  <input #price type='number' class="form-control" id="productPrice" type="text" placeholder="Product price (required)" 
+  required formControlName = "productPriceVar"/>
+  <span class="help-block" *ngIf="(productForm.get('productPriceVar').touched || productForm.get('productPriceVar').dirty) && productForm.get('productPriceVar').errors">
+    <span *ngIf="productForm.get('productPriceVar').errors.required">
+        Please enter product price.
+    </span>
+  </span>
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('mfgVar').touched || productForm.get('mfgVar').dirty) && !productForm.get('mfgVar').valid }">
+  <label class='control-label col-md-2' for="mfg">Mfg</label>  
+  <div class='col-md-10'>
+  <input #mfg type="date" class="form-control" id="mfg" placeholder="Mfg Date  (required)" 
+  required formControlName = "mfgVar"/>
+  <span class="help-block" *ngIf="(productForm.get('mfgVar').touched || productForm.get('mfgVar').dirty) && productForm.get('mfgVar').errors">
+    <span *ngIf="productForm.get('mfgVar').errors.required">Please enter mfg date.</span>
+  </span>
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('rating').touched || productForm.get('rating').dirty) && !productForm .get('rating').valid }">
+  <label class='control-label col-md-2' for="productRating">Rating</label>  
+  <div class='col-md-10'>
+  <input #rating type='number' class="form-control" id="productRating" type="number" placeholder="Product rating (required)" 
+  required formControlName = "rating"/>
+  <span class="help-block" *ngIf="(productForm.get('rating').touched || productForm.get('rating').dirty) && productForm.get('rating').errors">
+    <span *ngIf="productForm.get('rating').errors.range">Please rate your experience from 1 to 5.</span>
+  </span>
+  </div>  
+  </div>
+  <div class="form-group">
+  <label class='control-label col-md-2'>Image</label>  
+  <div class='col-md-10'>
+  <input #imageUrl type="file"  class="form-control" />
+  </div>  
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': (productForm.get('imgHeightVar').touched || productForm.get('imgHeightVar').dirty) && !productForm.get('imgHeightVar').valid }">
+  <label class='control-label col-md-2' for="imgHeight">Image Height</label>  
+  <div class='col-md-10'>
+  <input #imageHeight type='number' class="form-control" id="imgHeight" placeholder="Image Height (required)" 
+  required formControlName = "imgHeightVar"/>
+  <span class="help-block" *ngIf="(productForm.get('imgHeightVar').touched || productForm.get('imgHeightVar').dirty) && productForm.get('imgHeightVar').errors">
+    <span *ngIf="productForm.get('imgHeightVar').errors.required">
+        Please enter image height.
+    </span>
+  </span>
+  </div>  
+  </div>
+  <div class="form-group">
+  <label class='control-label col-md-2'>Image Width</label>  
+  <div class='col-md-10'>
+  <input #imageWidth type='number' class="form-control" />
+  </div>  
+  </div>   
+  <div class="form-group">
+    <label class='control-label col-md-2'>Category ID</label>  
+    <div class='col-md-10'>
+    <input #categoryId type='number' class="form-control" />
+    </div>  
+    </div>
+  <div class='form-group'>
+  <div class="col-md-offset-2 col-md-10">
+  <button
+  type='submit' class="btn btn-default"
+  (click)=
+  "createProduct(id.value,name.value,price.value,mfg.value,rating.value,imageUrl.value,imageHeight.value,imageWidth.value,categoryId.value,country.value)">
+  Create Product</button>
+  </div>
+  </div>
+  </form>
+  <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

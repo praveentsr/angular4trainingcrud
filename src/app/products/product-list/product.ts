@@ -8,4 +8,5 @@ export class Product{
     mfg:Date;
     rating:number;
     categoryId:number;
+    country:number;
 }
